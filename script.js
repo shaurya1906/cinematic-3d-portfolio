@@ -356,55 +356,7 @@
   }
 
   // ── CONTACT FORM ──────────────────────────────────────────────
-  const form = document.getElementById('contactForm');
-  if (form) {
-    form.addEventListener('submit', e => {
-      e.preventDefault();
-      const btn = form.querySelector('.f-submit');
-      
-      const name = document.getElementById('f-name').value;
-      const email = document.getElementById('f-email').value;
-      const msg = document.getElementById('f-msg').value;
+  // Form submission is now handled via standard form action (FormSubmit)
 
-      btn.textContent = 'Sending...';
-
-      fetch("https://formsubmit.co/ajax/officialshaurya006@gmail.com", {
-          method: "POST",
-          headers: {
-              'Content-Type': 'application/json',
-              'Accept': 'application/json'
-          },
-          body: JSON.stringify({
-              name: name,
-              email: email,
-              message: msg,
-              _subject: "New message from Portfolio!"
-          })
-      })
-      .then(response => response.json())
-      .then(data => {
-          btn.textContent = '✓ Message Sent!';
-          btn.style.background = '#39ff14';
-          btn.style.color = '#05050f';
-          btn.style.boxShadow = '0 0 40px rgba(57,255,20,.6)';
-          setTimeout(() => {
-            btn.textContent = 'Send Message →';
-            btn.style.background = '';
-            btn.style.color = '';
-            btn.style.boxShadow = '';
-            form.reset();
-          }, 3000);
-      })
-      .catch(error => {
-          console.error(error);
-          btn.textContent = 'Error! Try Again';
-          btn.style.background = '#ff003c';
-          setTimeout(() => {
-            btn.textContent = 'Send Message →';
-            btn.style.background = '';
-          }, 3000);
-      });
-    });
-  }
 
 })();
